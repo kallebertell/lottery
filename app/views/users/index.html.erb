@@ -1,0 +1,16 @@
+
+<div class="user-index">
+
+  <h1>Lottery Participants</h1>
+   
+  <% @users.each do |user| %>
+    <div class="user">
+      <%= link_to user.email, user, { class: "email" } %>
+      <%= link_to 'Edit', edit_user_path(user) %>
+      <%= link_to 'Remove', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  <% end %>
+
+
+  <%= link_to 'New New User', new_user_path, { class: "btn" } %>
+</div>

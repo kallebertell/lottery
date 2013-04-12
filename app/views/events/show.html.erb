@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<div class="event-show" ng-app="event">
+	<h1>Lottery Event: <%= @event.name %></h1>
+
+	<div class="section" ng-controller="ParticipantsCtrl">
+		<h3>Participants</h3>
+		<ul>
+			<li ng-repeat="participant in participants">{{participant.email}}</li>
+		</ul>
+		<form ng-submit="addParticipant()">
+			<label for="email">Email:
+				<input id="email" type="text" ng-model="emailText" placeholder="Participant's email"></input>
+			</label>
+			<input type="submit" class="btn" value="Add New Participant">
+		</form>
+	<div>
+
+	<div class="section">
+		<h3>Winners</h3>
+		<ul>
+			<% @event.winners.each do |winner| %>
+				<li> <%= winner.email %> </li>
+			<% end %>
+
+			<% if @event.winners.empty? %>
+			<p>No winners yet.</p>
+			<% end %>
+		</ul>
+
+		<form method="post" action="<%= request.fullpath %>/draw">
+			<input type="submit" class="btn" value="Pick Next Winner">
+		</form>
+	<div>
+
+
+</div>

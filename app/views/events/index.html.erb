@@ -1,0 +1,14 @@
+
+<div class="event-index">
+  <h1>Lottery Events</h1>
+
+  <% @events.each do |event| %>
+    <div>
+      <%= link_to event.name, event, { class: "event-name"} %>
+      <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  <% end %>
+
+  <%= link_to 'New Lottery Event', new_event_path, { class: "btn"} %>
+
+</div>
